@@ -15,12 +15,12 @@ export default Ember.Route.extend({
     }
   },
   model: function(transition) {
-    var locations= this.store.find('location');
+    var states = this.store.find('location', {level: 'state'});
+    var municipalities = this.store.find('location', {level: 'municipality'});
     var products = this.store.find('product', { level: '4digit' });
-    var industries = this.store.find('industry', { level: 'division' });
-
+    var industries = this.store.find('industry', { level: 'twodigit' });
     if(transition.query) {
-      return Ember.RSVP.all([industries, locations, products])
+      return Ember.RSVP.all([industries, states, municipalities, products])
         .then(function(array) {
           return _.chain(array)
             .map(function(d){ return d.content; })

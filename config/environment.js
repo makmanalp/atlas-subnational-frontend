@@ -24,7 +24,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.apiURL = "http://atlas-colombia-beta.cid-labs.com/api";
+    ENV.apiURL = "http://atlas-mexico-beta.cid-labs.com/api";
     ENV.contentSecurityPolicy = {
       'connect-src': "'self' 'localhost:4200' *",
       'style-src': "'self' 'unsafe-inline' *",

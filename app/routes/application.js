@@ -35,16 +35,21 @@ export default Ember.Route.extend({
 
       _.forEach(productsMetadata, function(d) {
         let sectionId= productsHierarchy[d.id];
-        let color = ProductSectionColor[sectionId].color;
-        d.color = color;
+        /*
+         *let color = ProductSectionColor[sectionId].color;
+         *d.color = color;
+         */
+        d.color = '#fff';
         d.group = sectionId;
       });
 
       _.forEach(industriesMetadata, function(d) {
         let sectionId = industriesHierarchy[d.id];
-        let color = sectionId ? IndustrySectionColor[sectionId].color : '#fff';
+        /*
+         *let color = sectionId ? IndustrySectionColor[sectionId].color : '#fff';
+         */
         d.group = sectionId;
-        d.color = color;
+        d.color = '#fff';
       });
 
       // Index metadata by entity id's

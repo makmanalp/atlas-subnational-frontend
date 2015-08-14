@@ -16,10 +16,10 @@ export default DS.Model.extend(ModelAttribute, {
   //following drives graphbuilder
   graphbuilderProducts: computed('id', function() {
     var defaultParams = {
-      treemap: { variable: 'export_value', startDate: 2007, endDate: 2013 },
-      multiples: { variable: 'export_value', startDate: 2007, endDate: 2013 },
-      scatter: { variable: null,  startDate: 2013, endDate: 2013 },
-      similarity: { variable: null,  startDate: 2013, endDate: 2013 }
+      treemap: { variable: 'export_value', startDate: 2009, endDate: 2013 },
+      multiples: { variable: 'export_value', startDate: 2009, endDate: 2013 },
+      scatter: {  variable: null, startDate: 2012, endDate: 2013 },
+      similarty: { variable: null, startDate: 2012, endDate: 2013 }
     };
     let products  = $.getJSON(`${apiURL}/data/location/${this.get('id')}/products?level=4digit`);
     let productComplexity = $.getJSON(`${apiURL}/data/product?level=4digit`);
@@ -45,9 +45,9 @@ export default DS.Model.extend(ModelAttribute, {
   }),
   graphbuilderIndustries: computed('id', function() {
     var defaultParams = {
-      treemap: { variable: 'wages', startDate: 2007, endDate: 2013 },
-      multiples: { variable: 'wages', startDate: 2007, endDate: 2013 },
-      scatter: { variable: null,  startDate: 2013, endDate: 2013 },
+      treemap: { variable: 'wages', startDate: 2009, endDate: 2013 },
+      multiples: { variable: 'wages', startDate: 2009, endDate: 2013 },
+      scatter: {  variable: null, startDate: 2012, endDate: 2013 },
       similarity: { variable: 'rca',  startDate: 2013, endDate: 2013 }
     };
     let industry = $.getJSON(`${apiURL}/data/location/${this.get('id')}/industries?level=class`);
