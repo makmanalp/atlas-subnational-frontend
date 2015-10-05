@@ -165,7 +165,7 @@ export default Ember.Controller.extend({
         }, {
           type: 'geo',
           description: 'graph_builder.change_graph.geo_description',
-          available: true
+          available: false
         }, {
           type: 'scatter',
           description: 'graph_builder.change_graph.scatter_description',
