@@ -1,6 +1,9 @@
 general:
   artifacts:
     - dist/
+machine:
+  environment:
+    BUILD_SUFFIX: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/$CIRCLE_BUILD_NUM/
 dependencies:
   post:
     - gem install sass
@@ -10,6 +13,7 @@ dependencies:
 test:
   override:
     - echo "Dummy test" && exit 0
+    - echo $BUILD_SUFFIX
   post:
     - ember build
-    - aws s3 sync ./dist/ "s3://ci-deploys.cid-labs.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/$CIRCLE_BUILD_NUM/"
+    - aws s3 sync ./dist/ "s3://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
