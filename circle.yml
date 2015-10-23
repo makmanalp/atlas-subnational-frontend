@@ -20,6 +20,4 @@ deployment:
   staging:
     branch: /.*/
     commands:
-      - ROOT_URL=/$BUILD_SUFFIX ember build
-      - aws s3 sync ./dist/ "s3://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
-      - echo "Check out deploy at: http://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
+      - ember build
