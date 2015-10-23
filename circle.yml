@@ -4,9 +4,9 @@ general:
 machine:
   environment:
     BUILD_SUFFIX: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/$CIRCLE_BUILD_NUM/
-    API_URL=http://atlas-mexico-cide.cid-labs.com/api
-    DEFAULT_LOCALE=es-col
-    OTHER_LOCALE=en-col
+    API_URL: http://atlas-mexico-cide.cid-labs.com/api
+    DEFAULT_LOCALE: es-col
+    OTHER_LOCALE: en-col
 dependencies:
   post:
     - gem install sass
