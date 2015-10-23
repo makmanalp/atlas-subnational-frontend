@@ -10,7 +10,7 @@ dependencies:
 test:
   override:
     - echo "Dummy test" && exit 0
-    - echo "{{CIRCLE_PROJECT_USERNAME}}"
+    - echo "$CIRCLE_PROJECT_USERNAME"
   post:
     - ember build
     - aws s3 sync ./dist/ s3://ci-deploys.cid-labs.com/
