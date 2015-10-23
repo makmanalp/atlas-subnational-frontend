@@ -7,6 +7,7 @@ machine:
     API_URL: http://atlas-mexico-cide.cid-labs.com/api
     DEFAULT_LOCALE: es-col
     OTHER_LOCALE: en-col
+    ROOT_URL: http://ci-deploys.cid-labs.com/$BUILD_SUFFIX
 dependencies:
   post:
     - gem install sass
@@ -20,6 +21,6 @@ deployment:
   staging:
     branch: /.*/
     commands:
-      - ember build
+      - ember build --environment=production
       - aws s3 sync ./dist/ "s3://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
-      - echo "Check out deploy at http://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
+      - echo "Check out deploy at $ROOT_URL"
