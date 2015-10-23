@@ -4,6 +4,9 @@ general:
 machine:
   environment:
     BUILD_SUFFIX: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH/$CIRCLE_BUILD_NUM/
+    API_URL=http://atlas-mexico-cide.cid-labs.com/api
+    DEFAULT_LOCALE=es-col
+    OTHER_LOCALE=en-col
 dependencies:
   post:
     - gem install sass
@@ -13,7 +16,10 @@ dependencies:
 test:
   override:
     - echo "Dummy test" && exit 0
-    - echo $BUILD_SUFFIX
-  post:
-    - ember build
-    - aws s3 sync ./dist/ "s3://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
+deployment:
+  staging:
+    branch: /.*/
+    commands:
+      - ROOT_URL=/$BUILD_SUFFIX ember build
+      - aws s3 sync ./dist/ "s3://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
+      - echo "Check out deploy at: http://ci-deploys.cid-labs.com/$BUILD_SUFFIX"
