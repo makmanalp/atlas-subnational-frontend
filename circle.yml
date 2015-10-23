@@ -8,6 +8,9 @@ dependencies:
     - if ! which bower; then npm install -g bower@1.4.1; else echo "Found existing bower in CircleCI cache"; fi
     - bower install
 test:
+  override:
+    - echo "Dummy test" && exit 0
+    - echo "{{CIRCLE_PROJECT_USERNAME}}"
   post:
     - ember build
     - aws s3 sync ./dist/ s3://ci-deploys.cid-labs.com/
