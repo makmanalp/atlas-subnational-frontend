@@ -1,0 +1,20 @@
+/**
+*
+* Treemap
+*
+**/
+
+// Nested here instead of giving ever el a class in the js
+.tree-map {
+  position: relative;
+  stroke-width: 0.5px;
+
+
+  &--title{
+    font-size: 25px;
+    padding: 4px;
+    text-overflow: clip !important;
+    font-family: $sans;
+    font-weight: 300;
+  }
+}
